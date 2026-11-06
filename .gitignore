@@ -1,0 +1,38 @@
+# Build trees (the launch chain builds into jobs/*/builds/)
+/build/
+/builds/
+/ignition-actor-build*/
+/solver-build*/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+
+# Run outputs
+/outputs/
+/jobs/radial/
+/jobs/wave/
+/jobs/*.out
+
+# Python environment (directory or symlink) and caches
+/gp_botorch_env
+__pycache__/
+*.py[cod]
+# Build trees (the launch chain builds into jobs/*/builds/)
+/build/
+/builds/
+/ignition-actor-build*/
+/solver-build*/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+
+# Run outputs
+/outputs/
+/jobs/radial/
+/jobs/wave/
+/jobs/*.out
+
+# Python environment (directory or symlink) and caches
+/gp_botorch_env
+__pycache__/
+*.py[cod]

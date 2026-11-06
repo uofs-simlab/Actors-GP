@@ -1,0 +1,68 @@
+subsection Mesh and Time
+  # Match the adaptive actor problem: radial coordinate r in [0,100]. If L
+  # denotes the full Cartesian width, this corresponds to L=200.
+  set Domain half length             = 100.0
+  set Global refinements             = 10
+  set Finite element degree          = 2
+  # This is the actor's conservative fallback. With positive wave speed, the
+  # solver replaces it by 0.9*(100-R)/0.5; for R=10, the actual final time is 162.
+  set Final time                     = 135.0
+  set Fast wave speed                = 0.4825
+  set Finite time safety factor      = 0.9
+  set Time step                      = 5e-2
+  # Write VTU snapshots at step 0 and every 100 accepted PETSc time steps.
+  set Output stride                  = 100
+  set Mesh adaptation frequency      = 50
+  set Maximum delta refinement level = 4
+  set Mesh refinement fraction       = 0.3
+  set Mesh coarsening fraction       = 0.05
+end
+
+subsection Time integrator
+  set Type               = bdf
+  set Adaptivity type    = basic
+  set Maximum steps      = -1
+  set Match step         = true
+  set Restart if remesh  = true
+  set Minimum step size  = 1e-8
+  set Maximum step size  = 5e-2
+  set Absolute tolerance = 1e-4
+  set Relative tolerance = 1e-3
+  set Early exit on ignition = false
+end
+
+subsection Initial condition
+  # Representative upper-bracket solve. The actor varies R in [1.5,25] and
+  # bisects Amplitude v in [0,10].
+  set Type         = smooth_disk
+  set Center x     = 0.0
+  set Center y     = 0.0
+  set Amplitude v  = 10.0
+  set Amplitude w  = 0.0
+  set Radius       = 20.0
+  set Steepness x  = 5.0
+  set Steepness y  = 5.0
+end
+
+subsection Output
+  set Output directory = outputs
+  set Label suffix     = kII_radial_bdf_g0p01_R10_Av10
+end
+
+subsection Model
+  set Alpha parameter = 0.37
+  set Gamma parameter = 0.01
+  set Diffusion v     = 1.0
+  set Diffusion w     = 0.0
+  set Beta parameter  = 0.131655
+end
+
+subsection Diagnostics
+  set Diagnostic stride                   = 20
+  set Excitation threshold                = 0.3
+  set Diagnosis start time                = 0.5
+  set Ignition max v threshold            = 0.5
+  set Ignition excited fraction threshold = 0.01
+  set Ignition sustain window             = 5.0
+  set Ignition area decay tolerance       = 0.02
+end

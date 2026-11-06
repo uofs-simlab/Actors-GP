@@ -1,0 +1,5 @@
+gamma,fast_wave_speed,observed_max_speed,observed_median_speed,n_samples,margin,updated_utc,source
+0.01,0.4825,,,,,2026-07-22,user-provided C_fast
+0.005,0.5028,,,,,2026-07-22,user-provided C_fast
+0.001,0.5174,,,,,2026-07-22,user-provided C_fast
+0.0005,0.5192,,,,,2026-07-22,user-provided C_fast
